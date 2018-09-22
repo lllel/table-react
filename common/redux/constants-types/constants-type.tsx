@@ -1,0 +1,8 @@
+export default {
+    LOAD_DATA: 'LOAD_DATA',
+    START: '_START',
+    SORTING_DATA: 'SORTING_DATA',
+    PAGINATION_PAGE: 'PAGINATION_PAGE',
+    SUCCESS: '_SUCCESS',
+    FAIL: '_FAIL'
+};
