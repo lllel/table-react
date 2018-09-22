@@ -8,7 +8,7 @@ import PaginationPart from "./parts/pagination/PaginationPart";
 import UserCardPage from "./parts/user-card/UserCardPage";
 
 interface IProps {
-    loadData?: () => void;
+    loadData?: (userAnswer) => void;
     loadDataInTable?: any;
 }
 
@@ -47,7 +47,9 @@ class TablePage extends React.Component<IProps, IState> {
     }
 
     componentDidMount() {
-        this.props.loadData();
+        const userAnswer = prompt('Введите цифру, какой объём данных загружать. 1 - маленький, 2 - большой. (По умолчанию - маленький)', '1');
+
+        this.props.loadData(userAnswer);
     }
 
     render() {

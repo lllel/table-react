@@ -3,6 +3,5 @@ export default {
     START: '_START',
     SORTING_DATA: 'SORTING_DATA',
     PAGINATION_PAGE: 'PAGINATION_PAGE',
-    SUCCESS: '_SUCCESS',
-    FAIL: '_FAIL'
+    SUCCESS: '_SUCCESS'
 };

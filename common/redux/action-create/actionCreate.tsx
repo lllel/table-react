@@ -4,7 +4,7 @@ const axios = require('axios');
 const urlSmallData = 'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}';
 const urlLargeData = 'http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}';
 
-export function loadData() {
+export function loadData(userAnswer) {
     return (dispatch) => {
         dispatch({
             type: constantsTypes.LOAD_DATA + constantsTypes.START,
@@ -14,7 +14,21 @@ export function loadData() {
             }
         });
 
-        axios.get(urlSmallData)
+        let data;
+
+        if (userAnswer === '1') {
+            data = urlSmallData;
+        }
+
+        if (userAnswer === '2') {
+            data = urlLargeData;
+        }
+
+        if (userAnswer !== '1' && userAnswer !== '2') {
+            data = urlSmallData;
+        }
+
+        axios.get(data)
             .then((data) => {
                 dispatch({
                     type: constantsTypes.LOAD_DATA + constantsTypes.SUCCESS,

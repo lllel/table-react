@@ -6,7 +6,6 @@ interface IProps {
 }
 
 interface IState {
-    // currentPage: string
 }
 
 export default class App extends React.Component<IProps, IState> {
@@ -14,26 +13,7 @@ export default class App extends React.Component<IProps, IState> {
         super(props);
     }
 
-    showNotFound() {
-        return <h2>Not Found!</h2>
-    }
-
-    onEvent(name) {
-        // if (this.props.event) {
-        //     this.props.event(name);
-        // }
-        //
-        // this.setState({
-        //     currentPage: name
-        // });
-    }
-
     render() {
-        // if (this.props.loading) {
-        //     return (
-        //         <p>Loading...</p>
-        //     )}
-
         return (
             <TablePage/>
         );
