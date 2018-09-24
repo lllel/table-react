@@ -11,6 +11,7 @@ interface IProps {
 }
 
 interface IState {
+    trIsActive: null | number;
 }
 
 class TbodyPart extends React.Component<IProps, IState> {
@@ -18,19 +19,18 @@ class TbodyPart extends React.Component<IProps, IState> {
 
     constructor(props) {
         super(props);
-    }
 
-    removeActiveClassInTr() {
-        [].forEach.call(this.tbodyRef.querySelectorAll('.tbody-tr--active'), (item) => {
-            item.classList.remove('tbody-tr--active');
-        });
+        this.state = {
+            trIsActive: null
+        };
     }
 
     onTbodyClick(evt) {
         const tr = evt.target.closest('[data-id]');
 
-        this.removeActiveClassInTr();
-        tr.classList.add('tbody-tr--active');
+        this.setState({
+            trIsActive: +tr.getAttribute('data-id')
+        });
         this.props.onSetUserData(tr.getAttribute('data-id'));
     }
 
@@ -48,7 +48,7 @@ class TbodyPart extends React.Component<IProps, IState> {
 
         return this.props.loadDataInTable.loadingData.map((item, index) => {
             if (index >= page && index < page + this.props.countTrInPage) {
-                return <TrPart data={item} key={index}/>;
+                return <TrPart className={`${this.state.trIsActive === item.id ? 'tbody-tr--active' : ''}`} data={item} key={index}/>;
             }
         });
     }

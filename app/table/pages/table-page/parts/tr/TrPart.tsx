@@ -2,6 +2,7 @@ import * as React from "react";
 
 interface IProps {
     data?: any;
+    className?: string;
 }
 
 interface IState {
@@ -14,7 +15,7 @@ class TrPart extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <tr data-id={this.props.data.id}>
+            <tr className={this.props.className || ''} data-id={this.props.data.id}>
                 {this.renderIndex()}
                 {this.renderTd()}
             </tr>
