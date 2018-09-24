@@ -24,10 +24,6 @@ class PaginationPart extends React.Component<IProps, IState> {
         };
     }
 
-    componentDidMount() {
-        this.paginationRef.querySelectorAll('.pagination__item')[0].classList.add('pagination__item--active');
-    }
-
     onPaginationClick(evt) {
         const paginationButton = evt.target.closest('.pagination__item');
 
